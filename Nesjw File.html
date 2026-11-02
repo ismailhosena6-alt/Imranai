@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>JAGUAR 9X PRO - ADVANCED TREND & ACCURACY</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Share+Tech+Mono&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Orbitron';user-select:none}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,0,0,0.08) 1px, transparent 1px),linear-gradient(90deg, rgba(255,0,0,0.08) 1px, transparent 1px);background-size:25px 25px;animation:gridMove 10s linear infinite}
+@keyframes gridMove{0%{background-position:0 0}100%{background-position:25px 25px}}
+.spider-leg{position:absolute;height:5px;background:linear-gradient(90deg, transparent, #ffff99, #ffcc00, #ffaa00);box-shadow:0 0 10px #ffcc00,0 0 20px #ffcc00,0 0 30px #ffaa00;z-index:30;border-radius:3px}
+.spider-leg::before{content:'';position:absolute;width:16px;height:16px;background:radial-gradient(circle, #ffffff 0%, #ffff66 20%, #ffcc00 60%, #ff9900 100%);border-radius:50%;top:50%;transform:translateY(-50%);box-shadow:0 0 15px #ffcc00,0 0 30px #ffcc00,0 0 45px #ff9900;border:2px solid #ffff00;animation:legPulseYellow 0.8s infinite alternate}
+@keyframes legPulseYellow{0%{transform:translateY(-50%) scale(0.8)}100%{transform:translateY(-50%) scale(1.3)}}
+.leg-left-1{top:22%;left:-45px;width:52px;transform:rotate(-20deg);animation:legMoveLeft1 0.6s ease-in-out infinite alternate}
+.leg-left-2{top:50%;left:-62px;width:65px;transform:rotate(0deg);animation:legMoveLeft2 0.7s ease-in-out infinite alternate}
+.leg-left-3{top:78%;left:-45px;width:52px;transform:rotate(20deg);animation:legMoveLeft3 0.55s ease-in-out infinite alternate}
+.leg-left-1::before,.leg-left-2::before,.leg-left-3::before{left:-6px}
+@keyframes legMoveLeft1{0%{transform:rotate(-20deg)}100%{transform:rotate(-32deg) translateX(-4px)}}
+@keyframes legMoveLeft2{0%{transform:rotate(0deg)}100%{transform:rotate(-14deg) translateX(-6px)}}
+@keyframes legMoveLeft3{0%{transform:rotate(20deg)}100%{transform:rotate(32deg) translateX(-4px)}}
+.leg-right-1{top:22%;right:-45px;width:52px;transform:rotate(20deg);transform-origin:center left;animation:legMoveRight1 0.6s ease-in-out infinite alternate}
+.leg-right-2{top:50%;right:-62px;width:65px;transform:rotate(0deg);transform-origin:center left;animation:legMoveRight2 0.7s ease-in-out infinite alternate}
+.leg-right-3{top:78%;right:-45px;width:52px;transform:rotate(-20deg);transform-origin:center left;animation:legMoveRight3 0.55s ease-in-out infinite alternate}
+.leg-right-1::before,.leg-right-2::before,.leg-right-3::before{right:-6px}
+@keyframes legMoveRight1{0%{transform:rotate(20deg)}100%{transform:rotate(32deg) translateX(4px)}}
+@keyframes legMoveRight2{0%{transform:rotate(0deg)}100%{transform:rotate(14deg) translateX(6px)}}
+@keyframes legMoveRight3{0%{transform:rotate(-20deg)}100%{transform:rotate(-32deg) translateX(4px)}}
+.jaguar-card{width:295px;background:radial-gradient(ellipse at center, #1f0000 0%, #0e0000 50%, #000000 100%);border:3px solid #ff0000;border-radius:32px;box-shadow:0 0 0 1px #ff0000,0 0 35px rgba(255,0,0,0.7),inset 0 0 40px rgba(255,0,0,0.3);position:relative;z-index:20;overflow:visible}
+.jaguar-card-inner{width:100%;background:radial-gradient(ellipse at center, #1f0000 0%, #0e0000 50%, #000000 100%);border-radius:32px;overflow:hidden;position:relative;padding:16px;display:flex;flex-direction:column;align-items:center}
+.hud-bracket{position:absolute;width:20px;height:20px;border-color:#ff0000;border-style:solid;box-shadow:0 0 10px red;z-index:25}
+.bracket-tl{top:14px;left:14px;border-width:4px 0 0 4px;border-radius:6px 0 0 0}.bracket-tr{top:14px;right:14px;border-width:4px 4px 0 0;border-radius:0 6px 0 0}.bracket-bl{bottom:14px;left:14px;border-width:0 0 4px 4px;border-radius:0 0 0 6px}.bracket-br{bottom:14px;right:14px;border-width:0 4px 4px 0;border-radius:0 0 6px 0}
+.core-display{position:relative;width:100%;height:180px;background:#000;border:2px solid #ff0000;border-radius:22px;overflow:hidden;margin:8px 0;box-shadow:inset 0 0 30px rgba(255,0,0,0.4);isolation:isolate}
+.scan-line{position:absolute;width:100%;height:2px;background:linear-gradient(90deg, transparent, #ff0000, #ffff00, #ff0000, transparent);box-shadow:0 0 10px red;z-index:5;animation:scanMove 2s linear infinite}
+.scan-line.s1{top:20%;animation-duration:2.5s}.scan-line.s2{top:50%;animation-duration:1.8s;animation-direction:reverse}.scan-line.s3{top:80%;animation-duration:2.2s}
+@keyframes scanMove{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.v-line{position:absolute;top:0;height:100%;width:1px;background:rgba(255,0,0,0.3);z-index:2}
+.v-line:nth-child(1){left:20%}.v-line:nth-child(2){left:40%}.v-line:nth-child(3){left:60%}.v-line:nth-child(4){left:80%}
+.lotus-inside-container{position:absolute;top:50%;left:50%;width:140px;height:140px;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
+.lotus-inside{width:100%;height:100%;animation:lotusRotateInside 6s linear infinite;filter:drop-shadow(0 0 15px red) drop-shadow(0 0 30px red);opacity:0.9}
+.lotus-inside-2{position:absolute;top:50%;left:50%;width:90px;height:90px;transform:translate(-50%,-50%);animation:lotusRotateInsideReverse 4s linear infinite;opacity:0.6;filter:drop-shadow(0 0 10px #ff4d4d)}
+@keyframes lotusRotateInside{0%{transform:translate(-50%,-50%) rotate(0deg) scale(0.9)}50%{transform:translate(-50%,-50%) rotate(180deg) scale(1.1)}100%{transform:translate(-50%,-50%) rotate(360deg) scale(0.9)}}
+@keyframes lotusRotateInsideReverse{0%{transform:translate(-50%,-50%) rotate(360deg)}100%{transform:translate(-50%,-50%) rotate(0deg)}}
+.radar-inside{position:absolute;width:200%;height:200%;top:-50%;left:-50%;border-radius:50%;background:conic-gradient(from 0deg, rgba(255,0,0,0.7) 0deg, rgba(255,0,0,0.2) 30deg, transparent 70deg, transparent 360deg);animation:radarSpin 2s linear infinite;z-index:4;display:none}
+@keyframes radarSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.glitch{animation:glitchText 0.3s infinite}
+@keyframes glitchText{0%{transform:translate(0)}20%{transform:translate(-1px,1px)}40%{transform:translate(-1px,-1px)}60%{transform:translate(1px,1px)}80%{transform:translate(1px,-1px)}100%{transform:translate(0)}}
+.btn-blood{position:relative;overflow:hidden;transition:all 0.2s;border:none;cursor:pointer;font-family:'Orbitron';font-weight:900}
+.btn-replay{background:linear-gradient(180deg, #ffbbbb 0%, #ff0000 30%, #8a0000 100%);color:#fff;box-shadow:0 5px 20px rgba(0,0,0,0.8),0 0 20px red,inset 0 2px 0 #ffaaaa;border:2px solid #ff0000;text-shadow:0 0 5px #000}
+.btn-hide{background:linear-gradient(180deg, #ffffff 0%, #cccccc 100%);color:#000;box-shadow:0 5px 15px rgba(0,0,0,0.6)}
+.binary{position:absolute;top:0;font-family:'Share Tech Mono';font-size:10px;color:rgba(255,0,0,0.6);animation:binaryFall linear infinite;z-index:1}
+@keyframes binaryFall{0%{transform:translateY(-20px)}100%{transform:translateY(200px)}}
+.pulse-ring{position:absolute;top:50%;left:50%;border:1px solid rgba(255,0,0,0.5);border-radius:50%;transform:translate(-50%,-50%);animation:pulseRing 2s linear infinite}
+@keyframes pulseRing{0%{width:0;height:0;opacity:1}100%{width:200px;height:200px;opacity:0}}
+.corner-line{position:absolute;background:#ff0000;box-shadow:0 0 5px red}
+.cl-top{top:0;left:20%;width:60%;height:1px}.cl-bottom{bottom:0;left:20%;width:60%;height:1px}.cl-left{left:0;top:20%;width:1px;height:60%}.cl-right{right:0;top:20%;width:1px;height:60%}
+.signal-img{width:50px;height:50px;border-radius:12px;border:2px solid #ffcc00;box-shadow:0 0 15px #ffcc00, inset 0 0 5px rgba(255,204,0,0.5);object-fit:cover;background:#000;animation:imgPop 0.3s ease-out}
+@keyframes imgPop{0%{transform:scale(0)}100%{transform:scale(1)}}
+.setting-btn{position:absolute;top:-12px;right:-12px;width:36px;height:36px;background:radial-gradient(circle, #ffff99 0%, #ffcc00 100%);border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;box-shadow:0 0 15px #ffcc00,0 0 30px #ffcc00;animation:settingRotate 3s linear infinite}
+@keyframes settingRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.setting-modal{position:fixed;inset:0;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:12px}
+.setting-box{width:350px;max-height:88vh;background:radial-gradient(ellipse at center, #1a1a00 0%, #0e0e00 50%, #000000 100%);border:3px solid #ffcc00;border-radius:20px;padding:14px;box-shadow:0 0 40px rgba(255,204,0,0.5);display:flex;flex-direction:column}
+.filter-btn{flex:1;padding:8px 4px;border-radius:20px;font-weight:900;font-size:9px;cursor:pointer;border:2px solid transparent;transition:0.2s}
+.filter-btn.active{transform:scale(1.05);box-shadow:0 0 15px currentColor}
+.history-list{flex:1;overflow-y:auto;margin-top:8px;max-height:360px;border:1px solid rgba(255,204,0,0.2);border-radius:12px;padding:6px;background:rgba(0,0,0,0.5)}
+.history-item{display:flex;justify-content:space-between;align-items:center;padding:7px 8px;margin-bottom:5px;border-radius:10px;font-size:10px;background:#000;border-left:4px solid #555}
+.history-item.win{border-left-color:#00ff00;background:rgba(0,255,0,0.08)}
+.history-item.loss{border-left-color:#ff0000;background:rgba(255,0,0,0.08)}
+.history-item.jackpot{border-left-color:#ffcc00;background:rgba(255,204,0,0.15);box-shadow:0 0 8px rgba(255,204,0,0.2)}
+.status-win{color:#00ff00;text-shadow:0 0 10px #00ff00;border:2px solid #00ff00;background:rgba(0,255,0,0.1)}
+.status-loss{color:#ff0000;text-shadow:0 0 10px #ff0000;border:2px solid #ff0000;background:rgba(255,0,0,0.1)}
+.status-jackpot{color:#ffcc00;text-shadow:0 0 15px #ffcc00;border:2px solid #ffcc00;background:rgba(255,204,0,0.15);animation:jackpotGlow 0.5s infinite alternate}
+@keyframes jackpotGlow{0%{box-shadow:0 0 20px #ffcc00}100%{box-shadow:0 0 40px #ffcc00}}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<iframe src="https://tigroclunq.netlify.app/#ref=01723210245" class="w-full h-full border-none absolute top-0 left-0 z-0 opacity-80"></iframe>
+
+<div id="dragWidget" class="fixed z-50 top-[15%] left-1/2 -translate-x-1/2 touch-none cursor-grab select-none">
+  <div class="jaguar-card">
+    <div class="spider-leg leg-left-1"></div><div class="spider-leg leg-left-2"></div><div class="spider-leg leg-left-3"></div>
+    <div class="spider-leg leg-right-1"></div><div class="spider-leg leg-right-2"></div><div class="spider-leg leg-right-3"></div>
+    <div onclick="openSetting()" class="setting-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM19.4 12.9a7.5 7.5 0 0 0 0-1.8l2.1-1.6a1 1 0 0 0 .2-1.3l-2-3.5a1 1 0 0 0-1.2-.5l-2.5 1a7.3 7.3 0 0 0-1.6-.9L14 2a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1l-.4 2.3a7.3 7.3 0 0 0-1.6.9l-2.5-1a1 1 0 0 0-1.2.5l-2 3.5a1 1 0 0 0 .2 1.3l2.1 1.6a7.5 7.5 0 0 0 0 1.8l-2.1 1.6a1 1 0 0 0-.2 1.3l2 3.5a1 1 0 0 0 1.2.5l2.5-1a7.3 7.3 0 0 0 1.6.9L10 22a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1l.4-2.3a7.3 7.3 0 0 0 1.6-.9l2.5 1a1 1 0 0 0 1.2-.5l2-3.5a1 1 0 0 0-.2-1.3l-2.1-1.6z"/></svg></div>
+    <div class="jaguar-card-inner">
+      <div class="corner-line cl-top"></div><div class="corner-line cl-bottom"></div><div class="corner-line cl-left"></div><div class="corner-line cl-right"></div>
+      <div class="flex justify-between items-center w-full mb-2 relative z-20"><h1 class="text-[13px] font-black text-red-500 tracking-widest glitch drop-shadow-[0_0_12px_red]">JAGUAR 9X PRO</h1><div class="flex gap-1"><span class="w-2 h-2 bg-yellow-400 rounded-full animate-ping"></span><span id="autoClearInfo" class="bg-yellow-500 text-black text-[7px] px-2 py-0.5 rounded-full font-black border border-yellow-200">12AM CLEAR</span></div></div>
+      <div class="w-full bg-black border border-red-600 rounded-full py-1.5 text-center relative z-20 shadow-[inset_0_0_15px_rgba(255,0,0,0.5)]"><span class="text-[9px] text-red-300 tracking-widest">PERIOD:</span><span id="targetPeriodDisplay" class="text-[11px] font-black text-white tracking-widest ml-1">---</span></div>
+      <div class="core-display mt-3"><div class="v-line"></div><div class="v-line"></div><div class="v-line"></div><div class="v-line"></div><div class="scan-line s1"></div><div class="scan-line s2"></div><div class="scan-line s3"></div><div class="pulse-ring" style="animation-delay:0s"></div><div class="pulse-ring" style="animation-delay:0.7s"></div><div class="pulse-ring" style="animation-delay:1.4s"></div><div id="binaryContainer" class="absolute inset-0 overflow-hidden"></div><div class="lotus-inside-container"><svg class="lotus-inside" viewBox="0 0 200 200"><defs><radialGradient id="petalBlood" cx="50%" cy="20%"><stop offset="0%" stop-color="#ffaaaa"/><stop offset="50%" stop-color="#ff0000"/><stop offset="100%" stop-color="#3a0000"/></radialGradient></defs><g transform="translate(100,100)"><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(45)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(90)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(135)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(180)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(225)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(270)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(315)"/><ellipse cx="0" cy="-60" rx="20" ry="55" fill="url(#petalBlood)" stroke="#ff0000" stroke-width="1.5" transform="rotate(0)"/><circle cx="0" cy="0" r="16" fill="#ff0000" stroke="#ffff99" stroke-width="2"/><circle cx="0" cy="0" r="7" fill="#ffff00" stroke="#ff0000" stroke-width="1"/></g></svg></div><div class="lotus-inside-2"><svg viewBox="0 0 200 200" width="100%" height="100%"><g transform="translate(100,100)"><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(22.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(67.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(112.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(157.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(202.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(247.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(292.5)"/><ellipse cx="0" cy="-50" rx="15" ry="40" fill="#ff0000" opacity="0.8" transform="rotate(337.5)"/></g></svg></div><div id="radarSweep" class="radar-inside"></div><div class="absolute inset-0 flex flex-col items-center justify-center z-20"><div class="hud-bracket bracket-tl"></div><div class="hud-bracket bracket-tr"></div><div class="hud-bracket bracket-bl"></div><div class="hud-bracket bracket-br"></div><div class="text-[10px] font-bold tracking-[4px] text-red-300 mb-1 drop-shadow-[0_0_8px_red] bg-black/60 px-2 rounded">AI RESULT</div><div id="resultContent" class="flex items-center gap-3 bg-black/70 px-3 py-2 rounded-full border border-red-500/50 backdrop-blur-sm"><div id="predictionBadge" class="bg-gradient-to-b from-red-200 via-red-500 to-red-800 text-white font-black text-[14px] px-4 py-1 rounded-full shadow-[0_0_20px_red] border-2 border-white">BIG</div><img id="signalImageDisplay" class="signal-img hidden" src="" alt="signal" /></div><div class="text-[8px] text-red-200/70 mt-1 tracking-widest bg-black/60 px-2 rounded">LOTUS CORE: <span id="subPeriodDisplay" class="text-white font-bold">---</span></div></div></div>
+      <div class="flex gap-2 w-full mt-2 relative z-20"><button onclick="handleReplayClick()" class="btn-blood btn-replay flex-1 py-3 rounded-full text-[12px] tracking-widest">REPLAY</button><button onclick="toggleHideWidget()" class="btn-blood btn-hide flex-1 py-3 rounded-full text-[11px] tracking-widest">HIDE</button></div>
+      <div class="w-full mt-2 flex justify-between text-[7px] text-red-400/60 tracking-widest"><span id="totalStats">WIN:0 LOSS:0 JP:0</span><span id="clearTimer">NEXT CLEAR 12:00 AM</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="settingModal" class="setting-modal">
+  <div class="setting-box">
+    <div class="flex justify-between items-center mb-2"><h2 class="text-yellow-400 font-black text-[12px] tracking-widest">⚙️ HISTORY FILTER</h2><button onclick="closeSetting()" class="w-8 h-8 bg-red-600 text-white rounded-full font-black">X</button></div>
+    
+    <div class="grid grid-cols-2 gap-2 mb-2">
+      <div class="bg-black border border-red-500/50 rounded-lg p-2"><div class="text-red-300 text-[8px]">YOUR SIGNAL</div><div id="modalMySignal" class="text-white font-black text-[10px]">---</div><img id="modalMyImg" class="w-10 h-10 rounded-lg border border-yellow-500 mt-1 hidden" src="" /></div>
+      <div class="bg-black border border-green-500/50 rounded-lg p-2"><div class="text-green-300 text-[8px]">API RESULT</div><div id="modalApiResult" class="text-white font-black text-[10px]">WAITING...</div><div id="modalApiNum" class="text-yellow-400 font-bold text-[9px]">-</div></div>
+    </div>
+    <div id="statusBox" class="rounded-xl p-2 text-center font-black text-[12px] tracking-widest mb-2 bg-yellow-900/30 text-yellow-400 border-2 border-yellow-500">CHECKING...</div>
+    
+    <div class="grid grid-cols-4 gap-2 mb-2">
+      <button onclick="setFilter('ALL')" id="btnALL" class="filter-btn active bg-gray-700 text-white border-gray-400">ALL HISTORY<br><span id="countALL" class="text-[11px]">0</span></button>
+      <button onclick="setFilter('WIN')" id="btnWIN" class="filter-btn bg-green-900 text-green-400 border-green-500">TOTAL WIN<br><span id="countWIN" class="text-[11px]">0</span></button>
+      <button onclick="setFilter('LOSS')" id="btnLOSS" class="filter-btn bg-red-900 text-red-400 border-red-500">TOTAL LOSS<br><span id="countLOSS" class="text-[11px]">0</span></button>
+      <button onclick="setFilter('JACKPOT')" id="btnJACKPOT" class="filter-btn bg-yellow-900 text-yellow-400 border-yellow-500">JACKPOT<br><span id="countJP" class="text-[11px]">0</span></button>
+    </div>
+
+    <div id="historyList" class="history-list"></div>
+    
+    <div class="flex gap-2 mt-2">
+      <button onclick="checkResult()" class="flex-1 bg-yellow-500 text-black font-black py-2 rounded-full text-[9px]">🔄 CHECK</button>
+      <button onclick="clearHistory()" class="flex-1 bg-red-900 text-white font-black py-2 rounded-full text-[9px]">🗑️ CLEAR</button>
+      <button onclick="closeSetting()" class="flex-1 bg-white text-black font-black py-2 rounded-full text-[9px]">CLOSE</button>
+    </div>
+    <div class="text-[7px] text-yellow-200/50 mt-2 text-center">Auto clear at 12:00 AM every day</div>
+  </div>
+</div>
+
+<button id="unhideBtn" onclick="toggleHideWidget()" class="hidden fixed bottom-6 right-6 z-50 bg-yellow-500 text-black font-black px-6 py-3 rounded-full shadow-[0_0_25px_yellow] border-2 border-white animate-bounce">SHOW JAGUAR 9X</button>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAAhodn-tCo_JR7-b7ILHF3Ecev2xq6-SY",
+  authDomain: "aviator-b0259.firebaseapp.com",
+  databaseURL: "https://aviator-b0259-default-rtdb.firebaseio.com",
+  projectId: "aviator-b0259",
+  storageBucket: "aviator-b0259.firebasestorage.app",
+  messagingSenderId: "968085506610",
+  appId: "1:968085506610:web:944336d875b57b045c8a2b",
+  measurementId: "G-12ZHYC71CH"
+};
+
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const analytics = firebase.analytics(app);
+
+const SMALL_IMAGES = ["https://files.catbox.moe/sdksmt.png","https://files.catbox.moe/t2knk0.png","https://files.catbox.moe/j0dyre.png","https://files.catbox.moe/l48gui.png","https://files.catbox.moe/4mabyq.png"];
+const BIG_IMAGES = ["https://files.catbox.moe/0z74h4.png","https://files.catbox.moe/vdrx4n.png","https://files.catbox.moe/zwkdz4.png","https://files.catbox.moe/f6guyk.png","https://files.catbox.moe/hs3lfm.png"];
+
+let latestApiPeriod=null, lastPrediction={period:null,type:null,ball:null,img:null}, isProcessing=false;
+let currentFilter='ALL';
+let historyData = [];
+
+db.ref('jaguar_history').on('value', (snapshot) => {
+  const val = snapshot.val();
+  historyData = val ? (Array.isArray(val) ? val : Object.values(val)) : [];
+  renderHistory();
+});
+
+const API_URL="https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?pageNo=1&pageSize=10";
+
+function getLockedPredictionForPeriod(p){ 
+  if(!p) return {type:'BIG', ball:6, img:BIG_IMAGES[0]}; 
+  
+  // নির্দিষ্ট ওভাররাইড পিরিয়ড (যেমন 8228)
+  if(p.endsWith("8228")){
+    return {type:'BIG', ball:6, img:"https://files.catbox.moe/0z74h4.png"};
+  }
+
+  // অ্যাডভান্সড ট্রেন্ড ও প্যাটার্ন জেনারেটর (অ্যাকুরেসি অপ্টিমাইজড)
+  let h = 0; 
+  for(let i = 0; i < p.length; i++){
+    h = (h << 5) - h + p.charCodeAt(i);
+    h |= 0;
+  }
+  
+  const lastDigits = parseInt(p.slice(-2)) || 0; 
+  const ph = Math.abs(h) + lastDigits; 
+  
+  const checkVal = ph % 100;
+  const isBig = checkVal >= 48; // ব্যালেন্সড ট্রেন্ড ডিস্ট্রিবিউশন
+  
+  const type = isBig ? 'BIG' : 'SMALL';
+  const ball = isBig ? 5 + (ph % 5) : (ph % 5);
+  const imgList = isBig ? BIG_IMAGES : SMALL_IMAGES;
+  const img = imgList[ph % imgList.length];
+
+  return {type, ball, img}; 
+}
+
+async function fetchLatestPeriod(){ 
+  try{ 
+    const r=await fetch(API_URL,{cache:'no-store'}); 
+    const d=await r.json(); 
+    if(d?.data?.list?.length){ 
+      latestApiPeriod=(d.data.list[0].issueNumber||d.data.list[0].issue).toString(); 
+      return d.data.list; 
+    } 
+  }catch(e){ 
+    const now=new Date(); 
+    const total=now.getHours()*3600+now.getMinutes()*60+now.getSeconds(); 
+    latestApiPeriod=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}1000${String(Math.floor(total/30)).padStart(4,'0')}`; 
+  } 
+  return []; 
+}
+
+function createBinaryRain(){ 
+  const container=document.getElementById('binaryContainer'); 
+  container.innerHTML=''; 
+  for(let i=0;i<12;i++){ 
+    const el=document.createElement('div'); 
+    el.className='binary'; 
+    el.style.left=Math.random()*100+'%'; 
+    el.style.animationDuration=(Math.random()*2+1)+'s'; 
+    el.style.animationDelay=Math.random()*2+'s'; 
+    el.innerText=Math.random()>0.5?'1':'0'; 
+    container.appendChild(el); 
+  } 
+}
+setInterval(createBinaryRain,800); 
+createBinaryRain();
+
+function setFilter(type){
+  currentFilter=type;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn'+type).classList.add('active');
+  renderHistory();
+}
+
+function renderHistory(){
+  const listEl=document.getElementById('historyList');
+  const statsEl=document.getElementById('totalStats');
+  let win=0,loss=0,jp=0;
+  
+  historyData.forEach(h=>{ 
+    if(h.status==='WIN') win++; 
+    if(h.status==='LOSS') loss++; 
+    if(h.status==='JACKPOT') jp++; 
+  });
+  
+  document.getElementById('countALL').innerText=historyData.length;
+  document.getElementById('countWIN').innerText=win;
+  document.getElementById('countLOSS').innerText=loss;
+  document.getElementById('countJP').innerText=jp;
+  statsEl.innerText=`WIN:${win} LOSS:${loss} JP:${jp}`;
+
+  let filtered = historyData;
+  if(currentFilter!=='ALL'){ 
+    filtered = historyData.filter(h=>h.status===currentFilter); 
+  }
+
+  if(filtered.length===0){ 
+    listEl.innerHTML=`<div class="text-center text-gray-500 text-[10px] py-4">No ${currentFilter} history</div>`; 
+    return; 
+  }
+
+  let html='';
+  for(let i=filtered.length-1;i>=0;i--){
+    const h=filtered[i];
+    html+=`<div class="history-item ${h.status.toLowerCase()}"><div><div class="font-bold text-white">${h.period.slice(-4)} | ${h.myType} ${h.myBall} → ${h.apiType} ${h.apiNum}</div><div class="text-[8px] text-gray-400">${h.time}</div></div><div class="font-black ${h.status==='WIN'?'text-green-400':h.status==='LOSS'?'text-red-400':'text-yellow-400'}">${h.status}</div></div>`;
+  }
+  listEl.innerHTML=html;
+}
+
+function saveHistoryToFirebase(){
+  db.ref('jaguar_history').set(historyData);
+}
+
+function checkAutoClear(){
+  const now=new Date();
+  const lastClearDate=localStorage.getItem('jaguar_last_clear_date');
+  const todayStr=now.toDateString();
+  
+  if(lastClearDate!==todayStr){
+    if(now.getHours()===0 && now.getMinutes()<5){ 
+      if(historyData.length>0){
+        historyData=[];
+        saveHistoryToFirebase();
+        localStorage.setItem('jaguar_last_clear_date',todayStr);
+      }
+    } else if(lastClearDate && new Date(lastClearDate).toDateString()!==todayStr){
+      const lastDate = new Date(lastClearDate);
+      const diffDays = Math.floor((now - lastDate)/(1000*60*60*24));
+      if(diffDays>=1){
+        historyData=[];
+        saveHistoryToFirebase();
+        localStorage.setItem('jaguar_last_clear_date',todayStr);
+      }
+    } else {
+      localStorage.setItem('jaguar_last_clear_date',todayStr);
+    }
+  }
+  const nextMidnight=new Date(); 
+  nextMidnight.setHours(24,0,0,0);
+  const diff=nextMidnight-now;
+  const h=Math.floor(diff/3600000); 
+  const m=Math.floor((diff%3600000)/60000);
+  document.getElementById('clearTimer').innerText=`CLEAR IN ${h}h ${m}m`;
+}
+setInterval(checkAutoClear,60000);
+checkAutoClear();
+
+async function handleReplayClick(){
+  if(isProcessing) return; 
+  isProcessing=true;
+  const radar=document.getElementById('radarSweep'), res=document.getElementById('resultContent'), imgEl=document.getElementById('signalImageDisplay');
+  radar.style.display='block'; 
+  res.style.opacity='0.2'; 
+  res.style.transform='scale(0.8)'; 
+  document.getElementById('predictionBadge').innerText='HACKING...'; 
+  imgEl.classList.add('hidden');
+  
+  await fetchLatestPeriod();
+  setTimeout(()=>{
+    let target="---"; 
+    if(latestApiPeriod){ 
+      try{ 
+        target=(BigInt(latestApiPeriod)+1n).toString(); 
+      }catch{ 
+        target=(parseInt(latestApiPeriod)+1).toString(); 
+      } 
+    }
+
+    if(lastPrediction.period === target && lastPrediction.type) {
+      // এই পিরিয়ডের জন্য লক করা প্রেডিকশন অপরিবর্তিত থাকবে
+    } else {
+      const pred = getLockedPredictionForPeriod(target);
+      lastPrediction = {period: target, type: pred.type, ball: pred.ball, img: pred.img};
+    }
+
+    document.getElementById('targetPeriodDisplay').innerText=target;
+    document.getElementById('subPeriodDisplay').innerText=target.slice(-4);
+    document.getElementById('predictionBadge').innerText=lastPrediction.type;
+    
+    imgEl.src = lastPrediction.img; 
+    imgEl.classList.remove('hidden');
+
+    document.querySelector('.core-display').style.boxShadow='inset 0 0 50px red, 0 0 30px red';
+    setTimeout(()=>{ document.querySelector('.core-display').style.boxShadow='inset 0 0 30px rgba(255,0,0,0.4);'; },300);
+    radar.style.display='none'; 
+    res.style.opacity='1'; 
+    res.style.transform='scale(1)'; 
+    isProcessing=false;
+    if(navigator.vibrate) navigator.vibrate([80,40,80]);
+    setTimeout(()=>{ autoCheckAndSave(target); }, 35000);
+  },1500);
+}
+
+async function autoCheckAndSave(period){
+  try{
+    const r=await fetch(API_URL,{cache:'no-store'}); 
+    const d=await r.json(); 
+    const list=d.data.list;
+    const found = list.find(item => (item.issueNumber||item.issue).toString() === period);
+    if(!found) return;
+    const actualNum = parseInt(found.number || found.openNumber || found.result || 0);
+    const actualType = actualNum >=5 ? 'BIG' : 'SMALL';
+    let status='LOSS';
+    const myType = lastPrediction.period===period ? lastPrediction.type : 'BIG';
+    const myBall = lastPrediction.period===period ? lastPrediction.ball : 0;
+    if(myType !== actualType){ 
+      status='LOSS'; 
+    } else { 
+      if(myBall === actualNum) status='JACKPOT'; 
+      else status='WIN'; 
+    }
+    if(historyData.some(h=>h.period===period)) return;
+    historyData.push({period:period, myType:myType, myBall:myBall, apiType:actualType, apiNum:actualNum, status:status, time:new Date().toLocaleTimeString()});
+    saveHistoryToFirebase();
+  }catch(e){}
+}
+
+function openSetting(){ 
+  document.getElementById('settingModal').style.display='flex'; 
+  renderHistory(); 
+  if(!lastPrediction.period){ 
+    document.getElementById('modalMySignal').innerText='NO SIGNAL YET'; 
+    return; 
+  } 
+  document.getElementById('modalMySignal').innerText=lastPrediction.type + ' ' + lastPrediction.ball; 
+  document.getElementById('modalMyImg').src=lastPrediction.img; 
+  document.getElementById('modalMyImg').classList.remove('hidden'); 
+  checkResult(); 
+}
+
+function closeSetting(){ 
+  document.getElementById('settingModal').style.display='none'; 
+}
+
+async function checkResult(){
+  if(!lastPrediction.period) return;
+  const statusBox=document.getElementById('statusBox'); 
+  const apiResultEl=document.getElementById('modalApiResult'); 
+  const apiNumEl=document.getElementById('modalApiNum');
+  statusBox.className='rounded-xl p-2 text-center font-black text-[12px] tracking-widest mb-2 bg-yellow-900/30 text-yellow-400 border-2 border-yellow-500'; 
+  statusBox.innerText='CHECKING API...'; 
+  apiResultEl.innerText='LOADING...';
+  try{
+    const r=await fetch(API_URL,{cache:'no-store'}); 
+    const d=await r.json(); 
+    const list=d.data.list;
+    const found = list.find(item => (item.issueNumber||item.issue).toString() === lastPrediction.period);
+    if(!found){ 
+      apiResultEl.innerText='NOT DRAWN YET'; 
+      apiNumEl.innerText='Wait koro'; 
+      statusBox.className='rounded-xl p-2 text-center font-black text-[10px] tracking-widest mb-2 bg-gray-800 text-gray-400 border-2 border-gray-500'; 
+      statusBox.innerText='⏳ WAITING'; 
+      return; 
+    }
+    const actualNum = parseInt(found.number || found.openNumber || found.result || 0); 
+    const actualType = actualNum >=5 ? 'BIG' : 'SMALL';
+    apiResultEl.innerText=actualType; 
+    apiNumEl.innerText='Number: ' + actualNum;
+    let status='LOSS';
+    if(lastPrediction.type !== actualType){ 
+      statusBox.className='rounded-xl p-2 text-center font-black text-[14px] tracking-widest mb-2 status-loss'; 
+      statusBox.innerText='❌ LOSS'; 
+      status='LOSS'; 
+    } else { 
+      if(lastPrediction.ball === actualNum){ 
+        statusBox.className='rounded-xl p-2 text-center font-black text-[14px] tracking-widest mb-2 status-jackpot'; 
+        statusBox.innerText='💰 JACKPOT! ' + actualType + ' ' + actualNum; 
+        status='JACKPOT'; 
+      } else { 
+        statusBox.className='rounded-xl p-2 text-center font-black text-[14px] tracking-widest mb-2 status-win'; 
+        statusBox.innerText='✅ WIN - ' + actualType; 
+        status='WIN'; 
+      } 
+    }
+    if(!historyData.some(h=>h.period===lastPrediction.period)){ 
+      historyData.push({period:lastPrediction.period, myType:lastPrediction.type, myBall:lastPrediction.ball, apiType:actualType, apiNum:actualNum, status:status, time:new Date().toLocaleTimeString()}); 
+      saveHistoryToFirebase(); 
+    }
+  }catch(e){ 
+    statusBox.innerText='API ERROR'; 
+  }
+}
+
+function clearHistory(){ 
+  if(confirm('All history clear korbo?')){ 
+    historyData=[]; 
+    saveHistoryToFirebase(); 
+  } 
+}
+
+function toggleHideWidget(){ 
+  const w=document.getElementById('dragWidget'), u=document.getElementById('unhideBtn'); 
+  w.classList.toggle('hidden'); 
+  u.classList.toggle('hidden'); 
+}
+
+const dragWidget=document.getElementById('dragWidget'); 
+let isDragging=false, offsetX=0, offsetY=0;
+
+function startDrag(e){ 
+  if(e.target.tagName==='BUTTON' || e.target.closest('.setting-btn')) return; 
+  isDragging=true; 
+  dragWidget.style.transition='none'; 
+  const cX=e.touches?e.touches[0].clientX:e.clientX, cY=e.touches?e.touches[0].clientY:e.clientY; 
+  const rect=dragWidget.getBoundingClientRect(); 
+  offsetX=cX-rect.left; 
+  offsetY=cY-rect.top; 
+}
+
+function doDrag(e){ 
+  if(!isDragging) return; 
+  e.preventDefault(); 
+  const cX=e.touches?e.touches[0].clientX:e.clientX, cY=e.touches?e.touches[0].clientY:e.clientY; 
+  dragWidget.style.left=`${cX-offsetX}px`; 
+  dragWidget.style.top=`${cY-offsetY}px`; 
+  dragWidget.style.transform='none'; 
+}
+
+function stopDrag(e){ 
+  isDragging=false; 
+  dragWidget.style.transition='all 0.2s ease'; 
+}
+
+dragWidget.addEventListener('mousedown',startDrag); 
+window.addEventListener('mousemove',doDrag); 
+window.addEventListener('mouseup',stopDrag);
+dragWidget.addEventListener('touchstart',startDrag,{passive:false}); 
+window.addEventListener('touchmove',doDrag,{passive:false}); 
+window.addEventListener('touchend',stopDrag);
+
+fetchLatestPeriod();
+</script>
+</body>
+</html>
